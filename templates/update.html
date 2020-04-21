@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Page To Update Employee Skills Status to the table</h1>
+  <p>Fill out the form to update the new skills status to the list.</p>
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.id.label }} : {{ form.id() }}
+      </div>
+      <div>
+          {{ form.learning_status.label }} : {{ form.learning_status() }}
+      </div>
+      {{ form.submit() }}
+  </form>
+</div>
+{% endblock %}

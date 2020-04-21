@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>Here is the list of all team member skills status.</h1>
+  <ul>
+    {% for i in employees  %}
+    <li>{{i}}</li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}
