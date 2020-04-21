@@ -13,12 +13,21 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 ##########################################
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# For SQLite =>
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.config.update(
+
+    SECRET_KEY='topsecret',
+    SQLALCHEMY_DATABASE_URI='postgresql://postgres:Qwerty0481@localhost/Employee',
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+)
 
 db = SQLAlchemy(app)
 Migrate(app,db)
 
+# Emp table
 class Emp(db.Model):
 
     __tablename__ = 'emps'
@@ -36,6 +45,7 @@ class Emp(db.Model):
 
     def __repr__(self):
         return f"Id : {self.id} | Employee : {self.name} |  Team : {self.team} | Skills : {self.skills} | Status : {self.learning_status}."
+
 
 ############################################
 
@@ -101,4 +111,5 @@ def del_emp():
     return render_template('delete.html',form=form)
 
 if __name__ == '__main__':
-    app.run()
+    db.create_all()
+    app.run(debug=True)
