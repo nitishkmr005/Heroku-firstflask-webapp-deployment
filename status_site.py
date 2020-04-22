@@ -2,7 +2,7 @@ import os
 from forms import  AddForm , DelForm, UpdForm
 from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+#from flask_migrate import Migrate
 
 app = Flask(__name__)
 # Key for Forms
@@ -26,7 +26,7 @@ app.config.update(
 )
 
 db = SQLAlchemy(app)
-Migrate(app,db)
+#Migrate(app,db)
 
 # Emp table
 class Emp(db.Model):
