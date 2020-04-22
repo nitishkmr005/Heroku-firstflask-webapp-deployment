@@ -20,7 +20,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config.update(
 
     SECRET_KEY='topsecret',
-    SQLALCHEMY_DATABASE_URI='postgresql://postgres:Qwerty0481@localhost/Employee',
+    SQLALCHEMY_DATABASE_URI='os.environ[DATABASE_URI]',
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 
