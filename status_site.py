@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 app = Flask(__name__)
 # Key for Forms
-app.config['SECRET_KEY'] = 'mysecretkey'
+#app.config['SECRET_KEY'] = 'mysecretkey'
 
 ############################################
 
