@@ -1,1 +1,2 @@
-web: uwsgi uwsgi.ini
+web: gunicorn status_site:app
+
