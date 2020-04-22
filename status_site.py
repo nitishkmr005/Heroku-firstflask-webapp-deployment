@@ -18,12 +18,10 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config.update(
-
-    SECRET_KEY='topsecret',
-    SQLALCHEMY_DATABASE_URI= os.environ['DATABASE_URL'],
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
-)
+app.config['SECRET_KEY']='topsecret'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ['DATABASE_URL']
+#app.config['SQLALCHEMY_DATABASE_URI']='postgres://whqhrtdctwhafc:f86cd62cac832bbe62e56a5619edd98651fd535036dfd3a6a8d5fa5dabc5b7dc@ec2-34-202-7-83.compute-1.amazonaws.com:5432/dc1c9fppm57ngk'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 db = SQLAlchemy(app)
 #Migrate(app,db)
@@ -91,7 +89,7 @@ def upd_emp():
         return redirect(url_for('list_emp'))
     return render_template('update.html',form=form)
 
-@app.route('/list')
+@app.route('/list', methods=['GET', 'POST'])
 def list_emp():
     # Grab a list of employess from database.
     employees = Emp.query.all()
@@ -111,6 +109,6 @@ def del_emp():
         return redirect(url_for('list_emp'))
     return render_template('delete.html',form=form)
 
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=False)
+#if __name__ == '__main__':
+db.create_all()
+app.run(debug=False)
