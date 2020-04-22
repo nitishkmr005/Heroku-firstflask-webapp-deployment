@@ -21,7 +21,7 @@ app = Flask(__name__)
 app.config.update(
 
     SECRET_KEY='topsecret',
-    SQLALCHEMY_DATABASE_URI='os.environ[DATABASE_URI]',
+    SQLALCHEMY_DATABASE_URI='os.environ.get(DATABASE_URL)',
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 
