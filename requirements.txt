@@ -27,4 +27,4 @@ SQLAlchemy==1.2.15
 visitor==0.1.3
 Werkzeug==0.16.1
 WTForms==2.1
-wsgi
+uwsgi
