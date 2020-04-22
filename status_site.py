@@ -21,7 +21,9 @@ app = Flask(__name__)
 app.config.update(
 
     SECRET_KEY='topsecret',
-    SQLALCHEMY_DATABASE_URI='os.environ[DATABASE_URL]',
+    #SQLALCHEMY_DATABASE_URI='os.environ[DATABASE_URL]',
+    SQLALCHEMY_DATABASE_URI='postgres://whqhrtdctwhafc:f86cd62cac832bbe62e56a5619edd98651fd535036dfd3a6a8d5fa5dabc5b7dc@ec2-34-202-7-83.compute-1.amazonaws.com:5432/dc1c9fppm57ngk
+',
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 
